@@ -1,0 +1,31 @@
+Ci sono essenzialmente tre linguaggi che permettono di fare scraping.
+- Node.js
+- Python
+- PHP
+
+PHP è molto meno usato, a quanto pare, ed è suggerito solo per chi è un drago di PHP di già, che non mi sembra il nostro caso. 
+
+Python io ne so un pochino ma tu niente e poi non è il linguaggio più usato per gestire il lato back-end di un sito o di un server.
+
+Node.js sembra essere la soluzione più frequente, perché è praticamente javascript.
+Anche se partiamo quasi da zero in js, secondo me vale la pena fare questo experimento.
+Quindi suggerirei di fare scraping con Node.js. 
+
+C'è una guida molto dettagliata per principianti su questo sito:
+
+https://www.freecodecamp.org/news/the-ultimate-guide-to-web-scraping-with-node-js-daa2027dcd3/
+
+quasi tutte le guide che ho trovato indicano l'istallazione di moduli separati per fare scraping e poi parsing. 
+questa guida richiede l'istallazione di:
+- node.js
+- request-promise module
+- CheerioJS
+- Puppeteer
+
+altre guide sostituiscono a request-promise la funzione nativa di node.js "scraper":
+https://levelup.gitconnected.com/web-scraping-with-node-js-c93dcf76fe2b
+
+oppure solo il modulo "request":
+http://www.netinstructions.com/simple-web-scraping-with-node-js-and-javascript/
+
+bisogna fare qualche esperimento e decidere quale modulo usare
