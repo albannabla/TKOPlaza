@@ -1,0 +1,57 @@
+h1{
+    color: Green;
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+    padding: 15px 32px;
+    margin-bottom: 5px;
+    width: 180px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+div {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+a {
+    display: block;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+label {
+    text-align: left;
+}
+p {
+    text-align: center;
+}
+
+input, label {
+  width: 100%;
+}
+
+label {
+    text-align: left;
+}
+
+form {
+    display: block;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+
+table {
+    border: 1px solid black;
+}
