@@ -11,7 +11,7 @@
   <?php
   $con = mysqli_connect("localhost", "root", "", "tko");
 
-  $sql = "SELECT * FROM Propertyhk";
+  $sql = "SELECT * FROM Propertyhk ORDER BY Date";
   echo
 		  "<table align='center'>
 		   <tr>

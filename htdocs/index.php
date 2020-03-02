@@ -46,7 +46,35 @@ for($i=0;$i<$countArrayLength;$i++){
     } 
 
 $source1 = json_encode($output1);
+
+
+//function for the third GRAPH
+$sql2 = "SELECT Date,COUNT(Date) AS Transactions FROM Propertyhk GROUP BY YEAR(Date),MONTH(Date)";
+$result2 = mysqli_query($con, $sql2);
+
+if ($result2->num_rows > 0) {
+    // output data of each row
+      while($row2 = $result2->fetch_assoc()) {
+      $rows2[] = $row2;
+      }    
+  } else {
+      echo "0 results";
+    }
+
+$output2 = [['Date','Transactions Number']];
+$countArrayLength = count($rows2);
+for($i=0;$i<$countArrayLength;$i++){
+    array_push($output2, array());
+        array_push($output2[$i+1], $rows2[$i]['Date']);
+        array_push($output2[$i+1], (float)$rows2[$i]['Transactions']);
+    } 
+
+$source2 = json_encode($output2);
+
+
+//close connections
 mysqli_close($con);
+
  ?>
 
 
@@ -85,13 +113,30 @@ mysqli_close($con);
         var data = google.visualization.arrayToDataTable(<?= $source1 ?>);
 
         var options = {
-          title: 'Tseung Kwan O Plaza - Median Montlhy Price per Sft',
+          title: 'Tseung Kwan O Plaza - Median Monthly Price per Sft',
           curveType: 'function',
           legend: { position: 'bottom' },
           pointSize: 5
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('average_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(<?= $source2 ?>);
+
+        var options = {
+          title: 'Tseung Kwan O Plaza - Number of Transactions per Month',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('trans_chart'));
 
         chart.draw(data, options);
       }
@@ -103,6 +148,7 @@ mysqli_close($con);
        </div>
         <div id="curve_chart" style="width: 900px; height: 500px"></div>
         <div id="average_chart" style="width: 900px; height: 500px"></div>
+        <div id="trans_chart" style="width: 900px; height: 500px"></div>
         <div> </div>
         <div> All data is aggregated from and copyrighted by</div>
         <a href="https://www.property.hk"> Property.hk</a>
